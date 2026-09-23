@@ -6,13 +6,16 @@
 
 body {
     min-height: 100vh;
-    background-color: black;
+    background-color: purple;
     color: whitesmoke;
-    font-size: 3rem;
+    font-size: 1.6rem;
     display: flex;
     flex-flow: column;
 }
 
+h1, h2{
+    font-size: 2rem;
+}
 nav {
     padding: 1rem;
     background-color: #44B78B;
@@ -38,4 +41,14 @@ a {
 
 a:hover {
     opacity: .85;
+}
+
+img.banner{
+    display: block;
+    width: 100%;
+    max-width: 800px;
+}
+
+.form-submit{
+    padding: 14px 20px;
 }
