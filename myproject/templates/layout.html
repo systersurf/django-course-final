@@ -13,14 +13,39 @@
     <script src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">Om</a>
-        <a href="{% url 'posts:list' %}">Nyheter</a>
-    </nav>
+    <header>
+        <nav>
+            <a class="navbar-button" href="/">Home</a>
+            <a class="navbar-button" href="/about">Om</a>
+            <a class="navbar-button" href="{% url 'posts:list' %}">Nyheter</a>
+            {% if user.is_authenticated %}
+                <a class="navbar-button" href="{% url 'posts:new-post' %}">Ny nyhet</a>
+                <form class="logout" action="{% url 'users:logout'%}" method="post">
+                    {% csrf_token %}
+                    <button class="logout-button">Logga UT!</button>
+                </form>
+            {% else %}
+                <a class="navbar-button" href="{% url 'users:register' %}">Lägg till användare</a>
+                <a class="navbar-button" href="{% url 'users:login' %}">Logga in!</a>
+            {% endif %}
+        </nav>
+    </header>
+
     <main>
         {% block content %}
         {% endblock %}
     </main>
+    <footer>
+        <div class="footer-container">
+            <div>LOGO</div>
+            <div>
+                <h3>Kontakt:</h3>
+                <p>kontakt@mittforetag.se</p>
+            </div>
+            <div>
+                <h3>Följ oss här:</h3>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
